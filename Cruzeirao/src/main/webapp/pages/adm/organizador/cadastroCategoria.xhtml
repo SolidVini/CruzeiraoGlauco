@@ -1,0 +1,72 @@
+<ui:composition template="InicialUser/comuns/templateMenu.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+>
+	
+	<ui:define name="title">
+		<h:outputText value="#{msg['pages.cadastroCategoria.title']}" />
+	</ui:define>
+	
+
+	<ui:define name="principal">
+	  
+	  <center>
+	  	<h1><p:outputLabel value="#{msg['pages.cadastroCategoria.menu']}"/></h1>
+	  </center>
+	  <center>
+	  <div class="principal" align="center">
+		<div class="container">
+			<f:view transient="true">
+		  <h:form id="form">	
+		  <p:panelGrid columns="2">
+		      <p:outputLabel value="#{msg['pages.cadastroCategoria.nome']}" />
+		      <p:inputText value="#{categoriaManagedBean.categoria.nome}"/>
+		      
+		      
+		      <p:outputLabel value="#{msg['pages.cadastroCategoria.nascidosApartirDe']}" />
+			  <p:inputMask value="#{categoriaManagedBean.categoria.nascidosApartirDe}"
+					  	 	placeholder="#{msg['pages.cadastroCategoria.idadeEscrever']}"
+							mask="9999" required="true">
+			  </p:inputMask>
+		      
+		      <h:outputText value="#{msg['pages.inicial.Sexo']}" />
+			  <p:selectOneMenu id="multiple" value="#{categoriaManagedBean.categoria.sexo}" >
+			  <f:selectItems value="#{categoriaManagedBean.categoria.sexos}"/>
+			  </p:selectOneMenu>
+		      
+			  
+		      <h:outputText value="#{msg['pages.cadastroCategoria.Min']}" />
+			   <p:inputNumber id="min" value="#{categoriaManagedBean.categoria.minJogadores}"/>
+			   
+			   <h:outputText value="#{msg['pages.cadastroCategoria.Max']}" />
+			   <p:inputNumber id="max" value="#{categoriaManagedBean.categoria.maxJogadores}"/>
+		   
+		   </p:panelGrid>
+		  
+		  	<br/>
+		   		<p:commandLink actionListener="#{categoriaManagedBean.salvar}" ajax="false"
+								style="width: 50%; max-width: 200px;">
+								<p:graphicImage library="sistema" name="imagens/btnSalvar.png"
+									alt="Login" width="103" height="42" style="margin-left: 90px;" />
+				</p:commandLink>
+		   		<p:spacer/>
+	       </h:form>
+
+     </f:view>
+     </div>
+     </div>
+	</center>
+	
+	   
+	</ui:define>
+</ui:composition>
+
+
+
+
+
+

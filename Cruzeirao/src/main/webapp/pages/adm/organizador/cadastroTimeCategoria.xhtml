@@ -1,0 +1,86 @@
+<ui:composition template="/pages/adm/organizador/InicialUser/comuns/templateMenu.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+>
+	
+	<ui:define name="title">
+		<h:outputText value="#{msg['pages.cadastroTimeCategoria.title']}" />
+	</ui:define>
+	
+
+	<ui:define name="principal">
+	  
+	  <center>
+	  	<h1><p:outputLabel value="#{msg['pages.cadastroTimeCategoria.menuPag']}"/></h1>
+	  </center>
+	  <center>
+	  <h:form id="formTimeCategoria">	
+		  <p:panelGrid columns="2">
+	      <p:outputLabel value="#{msg['pages.cadastroTimeCategoria.selecione']}" />
+	      <h:selectOneMenu converter="usuarioConverter" value="#{campeonatoMB.campeonato}">
+        	<f:selectItems value="#{campeonatoMB.campeonatos}" var="jog" itemLabel="#{jog.nome}" itemValue="#{jog}"/>
+     	  </h:selectOneMenu>
+	      
+	      <p:outputLabel value="#{msg['pages.cadastroTimeCategoria.categoria']}" />
+	      <h:selectOneMenu converter="usuarioConverter" value="#{campeonatoMB.categorias}">
+        	<f:selectItems value="#{categoriaManagedBean.categorias}" var="jog" itemLabel="#{jog.nome}" itemValue="#{jog}"/>
+     	  </h:selectOneMenu>
+	        
+	      <p:outputLabel value="#{msg['pages.cadastroTimeCategoria.nomeTime']}" /> 
+	      <h:selectOneMenu converter="usuarioConverter" value="#{campeonatoMB.equip}">
+        	<f:selectItems value="#{equipeManagedBean.equipes}" var="jog" itemLabel="#{jog.nome}" itemValue="#{jog}"/>
+     	  </h:selectOneMenu>
+		   
+		   </p:panelGrid>  
+		   
+		   <br/>
+		   <form>
+		   <h:panelGrid columns="2">
+		   <p:outputLabel value="#{msg['pages.cadastroTime.tecnico']}" />
+	      	<h:selectOneMenu converter="usuarioConverter" value="#{equipeManagedBean.jogadorSelecionado}">
+        	<f:selectItems value="#{usuarioManagedBean.tecnico}" var="jog" itemLabel="#{jog.username}" itemValue="#{jog}"/>
+     		</h:selectOneMenu>
+	      
+	       <p:outputLabel value="#{msg['pages.cadastroTime.prepFisico']}" />
+	       <h:selectOneMenu converter="usuarioConverter" value="#{equipeManagedBean.jogadorSelecionado}">
+        	<f:selectItems value="#{usuarioManagedBean.preparador}" var="jog" itemLabel="#{jog.username}" itemValue="#{jog}"/>
+     		</h:selectOneMenu>
+	       
+	       <p:outputLabel value="#{msg['pages.cadastroTime.massagista']}" />
+	       <h:selectOneMenu converter="usuarioConverter" value="#{equipeManagedBean.jogadorSelecionado}">
+        	<f:selectItems value="#{usuarioManagedBean.massagista}" var="jog" itemLabel="#{jog.username}" itemValue="#{jog}"/>
+     		</h:selectOneMenu>
+	       
+	       
+	       <p:outputLabel value="#{msg['pages.cadastroTimeCategoria.textJogadores']}" /> 
+	       
+	       <p:selectCheckboxMenu id="Jogadores" value="#{checkboxView.selectedCities}" label="#{msg['pages.cadastroTimeCategoria.jogText']}"
+	                              filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
+	            <f:selectItems value="#{checkboxView.cities}" />
+	        </p:selectCheckboxMenu>
+	       </h:panelGrid>
+	       </form>
+	       
+	       </h:form>
+
+	                 
+	    <p:commandButton value="#{msg['pages.cadastroTimeCategoria.btnSalvar']}" 
+	        		action="#{campeonatoMB.salvar()}"
+					update=":formTimeCategoria"
+	                 />
+	      
+	</center>
+	
+	   
+	</ui:define>
+</ui:composition>
+
+
+
+
+
+

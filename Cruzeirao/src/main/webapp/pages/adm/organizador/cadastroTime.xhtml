@@ -1,0 +1,51 @@
+<ui:composition template="InicialUser/comuns/templateMenu.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+>
+	
+	<ui:define name="title">
+		<h:outputText value="#{msg['pages.cadastroTime.title']}" />
+	</ui:define>
+	
+
+	<ui:define name="principal">
+	  
+	  <center>
+	  	<h1><p:outputLabel value="#{msg['pages.cadastroTime.menu']}"/></h1>
+	  </center>
+	  <center>
+	  <h:form id="formLocal">	
+	  <p:panelGrid columns="2">
+	  
+	  
+      <p:outputLabel value="#{msg['pages.cadastroTime.nome']}" />
+      <p:inputText value="#{equipeManagedBean.equipe.nome}"/>
+      
+      <p:outputLabel value="#{msg['pages.cadastroTime.dataFundacao']}" />     
+      <p:inputMask id="date" value="#{equipeManagedBean.equipe.dataFundacao}" mask="99/99/9999"/>
+      
+      <p:outputLabel value="#{msg['pages.cadastroTime.cidade']}" />     
+      <p:inputText value="#{equipeManagedBean.equipe.cidade}"/>
+      
+      <p:outputLabel value="#{msg['pages.cadastroTime.diretor']}" />     
+      <p:outputLabel value="#{usuarioManagedBean.usuarioAtivo.username}"/>
+      
+	   </p:panelGrid>
+	   
+	   <p:commandButton value="#{msg['pages.cadastroTime.btnSalvar']}" 
+	        		action="#{equipeManagedBean.salvar(usuarioManagedBean.usuarioAtivo.username)}"
+					update=":formLocal"
+	                 />
+       </h:form>
+       
+      
+      
+	</center>
+	
+	   
+	</ui:define>
+</ui:composition>
